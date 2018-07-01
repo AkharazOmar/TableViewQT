@@ -2,6 +2,8 @@ CMake Qt5 GUI Template
 ----------------------
 
 You need Qt5 and CMake 2.8.11 or higher
+(The static QVector crash when build project with cmake version 3.11.4)
+
 
 -- Build instructions --
 
@@ -9,8 +11,13 @@ cd /your/project/build
 cmake ../
 make
 
+
+-- launch project --
 ./eventmanager
 
+
+-- launch unit test --
+./test_eventmanager
 
 -- Tutorials and resources --
 
