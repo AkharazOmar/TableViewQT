@@ -12,7 +12,6 @@ TableModel::TableModel(QObject * parent):
 
 }
 
-
 QVariant TableModel::data ( const QModelIndex& index, int role ) const
 {
 

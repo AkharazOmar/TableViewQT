@@ -11,6 +11,12 @@ void TestTableModel::initTestCase()
 // testData
 void TestTableModel::testData()
 {
+    QCOMPARE(testModel.get()->rowCount(testModel.get()->index(0, 0)), 0);
+    testModel.get()->createEvent();
+    QCOMPARE(testModel.get()->rowCount(testModel.get()->index(0, 0)), 1);
+    QCOMPARE(testModel.get()->data(testModel.get()->index(0,0)).toString(), QStringLiteral("1"));
+    QCOMPARE(testModel.get()->data(testModel.get()->index(0,1)).toString(), QStringLiteral("2"));
+    QCOMPARE(testModel.get()->data(testModel.get()->index(0,2)).toString(), QStringLiteral("3"));
 
 }
 

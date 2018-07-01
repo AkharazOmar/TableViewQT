@@ -24,7 +24,7 @@ public:
      * @param role TODO
      * @return TODO
      */
-    QVariant data ( const QModelIndex& index, int role ) const override;
+    QVariant data ( const QModelIndex& index, int role=Qt::DisplayRole ) const override;
 
     /**
      * @todo write docs
