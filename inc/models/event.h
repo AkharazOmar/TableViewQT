@@ -49,7 +49,7 @@ public:
     /**
      * Destructor
      */
-    ~Event();
+    ~Event() noexcept;
 
     /**
      * @todo write docs
@@ -57,7 +57,7 @@ public:
      * @param other TODO
      * @return TODO
      */
-    Event& operator= ( const Event& other );
+    Event& operator=( const Event& other );
 
     /**
      * @todo write docs
@@ -65,7 +65,7 @@ public:
      * @param other TODO
      * @return TODO
      */
-    bool operator== ( const Event& other ) const;
+    virtual bool operator==( const Event& other ) const;
 
     /**
      * @todo write docs
@@ -73,7 +73,7 @@ public:
      * @param other TODO
      * @return TODO
      */
-    bool operator!= ( const Event& other ) const;
+    virtual bool operator!= ( const Event& other ) const;
 
     const QString &oid() const noexcept;
 

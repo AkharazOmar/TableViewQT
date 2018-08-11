@@ -41,7 +41,6 @@ QVariant TableModel::data ( const QModelIndex& index, int role ) const
 int TableModel::columnCount ( const QModelIndex& parent ) const
 {
     Q_UNUSED(parent);
-    // TODO:
     return 3;
 }
 
@@ -69,5 +68,5 @@ void TableModel::createEvent()
     endInsertRows();
 
 }
-}
-}
+}  // namespace model
+}  // namespace eventManager

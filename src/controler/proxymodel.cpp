@@ -24,9 +24,7 @@ ProxyModel::ProxyModel(QObject * parent):
 {
 }
 
-ProxyModel::~ProxyModel()   noexcept
-{
-}
+ProxyModel::~ProxyModel()   noexcept = default;
 
-}
-}
+}  // controller
+}  // namespace eventManager

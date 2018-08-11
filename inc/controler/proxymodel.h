@@ -34,7 +34,7 @@ public:
     /**
      * Default constructor
      */
-    ProxyModel(QObject * parent=Q_NULLPTR);
+    explicit ProxyModel(QObject * parent=Q_NULLPTR);
 
     /**
      * Copy Constructor

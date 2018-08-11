@@ -24,10 +24,38 @@ class EventData : public QSharedData
 {
 public:
     
-    EventData(): QSharedData() { }
-    EventData(const EventData &orig):
-    QSharedData(orig),  oidEvent_(orig.oidEvent_),  standardAttributes_(orig.standardAttributes_), specificAttributes_(orig.specificAttributes_)  { }
-    ~EventData() { }
+    EventData() = default;
+    EventData(const EventData &orig) = default;
+    EventData & operator =(const EventData& cpEventD) {
+        if (this != &cpEventD) {
+            //QSharedData(cpEventD);
+            oidEvent_ = cpEventD.oidEvent_;
+            standardAttributes_ = cpEventD.standardAttributes_;
+            specificAttributes_ = cpEventD.specificAttributes_;
+        }
+
+        return *this;
+    }
+
+    EventData(EventData &&orig) noexcept:
+        oidEvent_(std::move(orig.oidEvent_)),
+        standardAttributes_(std::move(orig.standardAttributes_)),
+        specificAttributes_(std::move(orig.specificAttributes_))
+    {
+
+    }
+
+    EventData &operator=(EventData &&orig) noexcept
+    {
+        if (this == &orig) {
+            oidEvent_ = std::move(orig.oidEvent_);
+            standardAttributes_ = std::move(orig.standardAttributes_);
+            specificAttributes_ = std::move(orig.specificAttributes_);
+        }
+        return *this;
+    }
+
+    ~EventData() = default;
     
     QString oidEvent_;
     QHash<QString, QVariant> standardAttributes_;
@@ -47,25 +75,24 @@ Event::Event ( const Event& other )
     : d ( other.d )
 {
 }
-
-Event::~Event()
-{
-}
+Event::~Event() noexcept = default;
 
 Event& Event::operator= ( const Event& other )
 {
-    d = other.d;
+    if (this != &other) {
+        d = other.d;
+    }
     return *this;
 }
 
 bool Event::operator== ( const Event& other ) const
 {
-    return other.d-> oidEvent_ == d->oidEvent_; 
+    return other.d->oidEvent_ == d->oidEvent_;
 }
 
 bool Event::operator!= ( const Event& other ) const
 {
-    return other.d-> oidEvent_ != d->oidEvent_;
+    return other.d->oidEvent_ != d->oidEvent_;
 }
 
 const QString &Event::oid() const noexcept

@@ -3,8 +3,9 @@ project(EventManager)
 
 # Define Custom Variable.
 # Force norme C++
-set(GCC_C_NORME "-std=gnu++17 ")
+set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PROJECT_SRC_DIR src)
 set(PROJECT_INC_DIR inc)
 set(PROJECT_TEST_DIR test)

@@ -1,9 +1,10 @@
-#include <QDebug>
-
 #include "eventmanager.h"
 #include "ui_eventmanager.h"
+#include <QDebug>
+#include <memory>
 
 namespace eventManager {
+
 
 EventManager::EventManager(QWidget *parent) :
     QMainWindow(parent),
@@ -11,10 +12,10 @@ EventManager::EventManager(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    _theProxyModel.reset(new eventManager::controller::ProxyModel);
+    _theProxyModel = std::make_unique<eventManager::controller::ProxyModel>();
 
-    _myModel.reset(new eventManager::model::TableModel);
-    _theProxyModel.get()->setSourceModel(_myModel.get());
+    _myModel = std::make_unique<eventManager::model::TableModel>();
+    _theProxyModel->setSourceModel(_myModel.get());
 
     _theProxyModel->moveToThread(&modelThread);
     modelThread.start();
@@ -40,4 +41,4 @@ EventManager::~EventManager() noexcept
     }
 }
 
-}
+}  // namespace eventManager

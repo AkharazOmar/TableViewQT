@@ -7,6 +7,6 @@ int main(int argc, char *argv[])
     eventManager::EventManager w;
     w.show();
 
-    return app.exec();
+    return QApplication::exec();
 }
 

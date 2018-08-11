@@ -16,7 +16,7 @@ class TableModel final: public QAbstractTableModel
 public:
 
     /// Contructor
-    TableModel(QObject * parent=Q_NULLPTR);
+    explicit TableModel(QObject * parent=Q_NULLPTR);
     /**
      * @todo write docs
      *
@@ -52,6 +52,6 @@ public Q_SLOTS:
 private:
     QList<Event> m__events;
 };
-}
-}
+}  // namespace model
+}  // namespace eventManager
 #endif // TABLEMODEL_H

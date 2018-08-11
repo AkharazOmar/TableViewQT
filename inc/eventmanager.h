@@ -1,12 +1,12 @@
 #ifndef EVENTMANAGER_H
 #define EVENTMANAGER_H
 
-#include <QThread>
-#include <QMainWindow>
-#include <memory>
-
 #include "controler/proxymodel.h"
 #include "models/tablemodel.h"
+
+#include <QMainWindow>
+#include <QThread>
+#include <memory>
 
 namespace Ui {
 
@@ -31,7 +31,8 @@ public:
     /**
      * Destructor
      */
-    ~EventManager() noexcept;
+    ~EventManager() noexcept final;
+
 private Q_SLOTS:
     //! slot call when click in tableView
     void onClicked(const QModelIndex &index);
@@ -50,5 +51,5 @@ private:
     std::unique_ptr<eventManager::model::TableModel> _myModel;
 };
 
-}
+}  // namespace eventManager
 #endif // EVENTMANAGER_H
